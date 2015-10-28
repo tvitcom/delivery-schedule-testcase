@@ -8,16 +8,16 @@ This is test-case application Way-Dispathcher for some Company.
 curl -sS https://getcomposer.org/installer | php
 php composer.phar update
 ```
-   After will downloads necessary components and framework Yii in vendor folder.
+   After will downloads necessary components and framework Yii in `vendor` folder.
 
 2. Create new database and database user with same name "way". Set settings 
-   protected/config/database.php for our db "way".
+   `protected/config/database.php` for our db "way".
 
-3. Import actual demo dump file from the folder: protected/data/way_yyyymmddhhmm.sql 
-     (part name as format yyyy-mm-dd hh:mm)
+3. Import actual demo dump file from the folder: `protected/data/way_yyyymmddhhmm.sql` 
+     (part name as format `yyyy-mm-dd hh:mm`)
      
 ## Using account:
 
-- Administrator (as login/password): admin/pass_as_admin
-- Dispatcher  (as login/password): dispatcher/dispatcher
+- Administrator (as login/password): `admin / pass_as_admin`
+- Dispatcher  (as login/password): `dispatcher / dispatcher`
 
