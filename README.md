@@ -8,7 +8,7 @@ This is test-case application Way-Dispathcher for some Company.
 curl -sS https://getcomposer.org/installer | php
 php composer.phar update
 ```
-   After will downloads nessosary components and framework Yii in vendor folder.
+   After will downloads necessary components and framework Yii in vendor folder.
 
 2. Create new database and database user with same name "way". Set settings 
    protected/config/database.php for our db "way".
