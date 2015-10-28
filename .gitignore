@@ -1,6 +1,27 @@
+# environment *nix
+!.htaccess
+.*
+!.gitignore
+*~
+
+# environment Windows
+# Windows
+Thumbs.db
+Desktop.ini
+
+# composer
+vendor/*
+composer.phar
+composer.lock
+
+# netbeanse
+nbproject/*
+*.swp
+*/*.swp
+nbactions.xml
+nb-configuration.xml
+.nb-gradle/
+
+#Yii files
 assets/*
-!assets/.gitignore
 protected/runtime/*
-!protected/runtime/.gitignore
-protected/data/*.db
-themes/classic/views/
