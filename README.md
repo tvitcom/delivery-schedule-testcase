@@ -9,3 +9,11 @@ This is test case for some Company.
      подключения к нашей БД "way".
 - 3. Импортируем свежий (см. дату в названии файла в формате yyyy-mm-dd)
      дамп базы данных с демоданными находящийся в папке /protected/data/
+## Using:
+
+- Administrator 
+    Login: admin 
+    Password: pass_as_admin
+- Dispatcher
+    Login: dispatcher
+    Password: dispatcher
