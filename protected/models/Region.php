@@ -34,7 +34,7 @@ class Region extends CActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('name', 'required'),
+            array('name,distance,duration', 'required'),
             array('distance', 'numerical', 'integerOnly' => true),
             array('duration', 'numerical', 'integerOnly' => true),
             array('name', 'length', 'max' => 52),

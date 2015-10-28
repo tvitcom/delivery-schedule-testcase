@@ -1,14 +1,15 @@
 # way-dispatcher
-This is test case for some Company.
+This is test case "Way-Dispathcher" application for some Company.
 
 ## Setup:
-- 1. Даем команду в текущей директории: 
+- 1. In current webroot directory: 
      php composer.phar update
-     После этого скачаются необходимые компоненты и сам фреймворк Yii.
-- 2. Создадим новую базу данных и пользователя "way". Зададим настройки 
-     подключения к нашей БД "way".
-- 3. Импортируем свежий (см. дату в названии файла в формате yyyy-mm-dd)
-     дамп базы данных с демоданными находящийся в папке /protected/data/
+     After will downloads nessosary components and framework Yii in vendor folder.
+- 2. Create new database and database user with same name "way". Set settings 
+     protected/config/database.php for our db "way".
+- 3. Import actual demo dump file from the folder: protected/data/way_yyyymmddhhmm.sql 
+     (part name as format yyyy-mm-dd hh:mm)
+     
 ## Using:
 
 - Administrator 
@@ -17,3 +18,4 @@ This is test case for some Company.
 - Dispatcher
     Login: dispatcher
     Password: dispatcher
+==

@@ -12,8 +12,8 @@ $pillsOptions = array(
         'label' => 'Appointments',
         'url' => array('/region/index'),
         'visible' => !Yii::app()->user->isGuest,
-        'active' => (Yii::app()->controller->id == 'trip' && Yii::app()->controller
-        ->action->id == 'create') ? true : false,
+        'active' => (Yii::app()->controller->id == 'region' && Yii::app()->controller
+        ->action->id == 'index') ? true : false,
     ),
     array(
         'label' => 'AdminPanel',

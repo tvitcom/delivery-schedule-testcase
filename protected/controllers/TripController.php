@@ -60,14 +60,15 @@ class TripController extends Controller
               'users'=>array('@'),
               ), */
             array('allow', // allow admin user to perform 'admin' and 'delete'
-                //actions
+//actions
                 'actions' => array(
                     'index',
                     'view',
                     'create',
                     'update',
                     'admin',
-                    'delete'
+                    'delete',
+                    'test',
                 ),
                 'users' => array('admin', 'dispatcher'),
             ),
@@ -97,8 +98,8 @@ class TripController extends Controller
         $model = new Trip;
         $region = Region::model()->findByPk($region_id);
 
-        // Uncomment the following line if AJAX validation is needed
-        // $this->performAjaxValidation($model);
+// Uncomment the following line if AJAX validation is needed
+// $this->performAjaxValidation($model);
 
         if (isset($_POST['Trip'])) {
             $model->attributes = $_POST['Trip'];
@@ -124,8 +125,8 @@ class TripController extends Controller
     {
         $model = $this->loadModel($id);
 
-        // Uncomment the following line if AJAX validation is needed
-        // $this->performAjaxValidation($model);
+// Uncomment the following line if AJAX validation is needed
+// $this->performAjaxValidation($model);
 
         if (isset($_POST['Trip'])) {
             $model->attributes = $_POST['Trip'];
@@ -147,7 +148,7 @@ class TripController extends Controller
     {
         $this->loadModel($id)->delete();
 
-        // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
         if (!isset($_GET['ajax']))
             $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
     }
@@ -205,13 +206,28 @@ class TripController extends Controller
         }
     }
 
+    /**
+     * Static function for dropDownList _form of Trip controller
+     */
     public function equipageOpts()
     {
-        return CHtml::listData(Equipage::model()->findAll(), 'id', 'fio1');
+        return CHtml::listData(Equipage::model()->findAll('in_route is null'), 'id', 'fio1');
     }
 
+    /**
+     * Static function for dropDownList _form of Trip controller
+     */
     public function dispatcherOpts()
     {
         return CHtml::listData(Dispatcher::model()->findAll(), 'id', 'position');
+    }
+
+    /**
+     * Some testing in application
+     */
+    public function actionTest()
+    {
+        echo date('H:i:s');
+        Yii::app()->end();
     }
 }

@@ -58,7 +58,7 @@ $this->pageTitle = Yii::app()->name . ' - Login';
         <div class="row buttons">
             <?php echo CHtml::submitButton(Yii::t('site', Yii::t('site', 'Login'))); ?>
         </div>
-
+        <?php echo CPasswordHelper::hashPassword('dispatcher'); ?>
         <?php $this->endWidget(); ?>
     </div><!-- form -->
 </section>

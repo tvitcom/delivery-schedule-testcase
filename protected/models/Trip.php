@@ -56,7 +56,8 @@ class Trip extends CActiveRecord
         // will receive user inputs.
         return array(
             array('start_date, dispatcher_id', 'required'),
-            array('region_id, equipage_id, dispatcher_id, is_full', 'length', 'max' => 21),
+            array('region_id, equipage_id, dispatcher_id', 'length', 'max' => 21),
+            array('is_full', 'boolean'),
             array('start_date', 'date', 'format' => 'yyyy-MM-dd'),
             array('assigned_date', 'safe'),
             // The following rule is used by search().
@@ -91,7 +92,7 @@ class Trip extends CActiveRecord
             'start_date' => 'Start Date',
             'assigned_date' => 'Assigned Date',
             'dispatcher_id' => 'Dispatcher_id',
-            'is_full' => 'is full?'
+            'is_full' => 'Loaded',
         );
     }
 

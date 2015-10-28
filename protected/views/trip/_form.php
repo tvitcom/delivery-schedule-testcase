@@ -52,11 +52,22 @@
         <?php echo $form->textField($model, 'start_date'); ?>
         <?php echo $form->error($model, 'start_date'); ?>
     </div>
+    <?php
+    echo CHtml::ajaxLink(
+        'Test request', // the link body (it will NOT be HTML-encoded.)
+        array('trip/test'), // the URL for the AJAX request. If empty, it is assumed to be the current URL.
+        array(
+        'update' => '#req_res'
+        )
+    );
+
+    ?>
+    <div id="req_res" class="well-sm">test messages!</div>
 
     <div class="row">
-        <?php //echo $form->labelEx($model, 'assigned_date'); ?>
+        <?php //echo $form->labelEx($model, 'assigned_date');  ?>
         <?php //echo $form->textField($model, 'assigned_date'); ?>
-        <?php //echo $form->error($model, 'assigned_date'); ?>
+        <?php //echo $form->error($model, 'assigned_date');    ?>
     </div>
 
     <div class="row">

@@ -84,7 +84,6 @@ class RegionController extends Controller
 
         $this->render('create', array(
             'model' => $model,
-            'region_id' => $region_id,
         ));
     }
 
