@@ -12,7 +12,7 @@
     </p>
     <p><a class="btn btn-lg btn-success"
           href="<?php echo $this->createUrl('region/index'); ?>"
-          role="button">Appintments for <span class="badge"><?php echo $countEquipages; ?></span> couriers!</a></p>
+          role="button">Delivery to <span class="badge"><?php echo $countRegions; ?></span> regions!</a></p>
 </div>
 
 <div class="row marketing">

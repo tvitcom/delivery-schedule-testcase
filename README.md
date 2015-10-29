@@ -18,6 +18,6 @@ php composer.phar update
      
 ## Using account:
 
-- Administrator (as login/password): `admin / pass_as_admin`
-- Dispatcher  (as login/password): `dispatcher / dispatcher`
+- Administrator (as login/password): `admin` / `pass_as_admin`
+- Dispatcher  (as login/password): `dispatcher` / `dispatcher`
 

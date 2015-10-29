@@ -14,7 +14,7 @@ return array(
     'language' => substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2),
     'sourceLanguage' => 'en-US',
     // preloading 'log' component
-    'preload' => array('log'),
+    //'preload' => array('log'),
     // autoloading model and component classes
     'import' => array(
         'application.models.*',

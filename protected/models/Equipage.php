@@ -32,7 +32,7 @@ class Equipage extends CActiveRecord
         // will receive user inputs.
         return array(
             array('fio1, fio2', 'length', 'max' => 45),
-            array('in_route', 'bool'),
+            array('in_route', 'boolean'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
             array('id, fio1, fio2 , in_route', 'safe', 'on' => 'search'),
@@ -85,7 +85,7 @@ class Equipage extends CActiveRecord
         $criteria->compare('id', $this->id, true);
         $criteria->compare('fio1', $this->fio1, true);
         $criteria->compare('fio2', $this->fio2, true);
-        $criteria->compare('in_route', $this->in_route, type);
+        $criteria->compare('in_route', $this->in_route, true);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,

@@ -2,6 +2,11 @@
 /* @var $this TripController */
 /* @var $dataProvider CActiveDataProvider */
 
+$this->menu = array(
+    array('label' => 'Create delivery', 'url' => array('create')),
+    array('label' => 'Manage records', 'url' => array('admin')),
+);
+
 ?>
 
 <h1>Trips</h1>

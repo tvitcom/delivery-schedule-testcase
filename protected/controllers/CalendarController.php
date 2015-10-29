@@ -2,61 +2,53 @@
 
 class CalendarController extends Controller
 {
-
     /**
      * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
      * using two-column layout. See 'protected/views/layouts/column2.php'.
      */
-    //public $layout = '//layouts/dashboard';
+    public $layout = '//layouts/combination';
 
     public function actionIndex()
     {
         $this->render('index');
     }
 
-    // fullcalendar.EFullCalendarHeart
+    // efullcalendar.EFullCalendar
     public function actionCalendarEvents()
     {
         $items = array();
         $model = Trip::model()->findAll();
         foreach ($model as $value) {
             $items[] = array(
-                'title' => $value->name,
-                'start' => $value->start,
-                'end' => date('Y-m-d', strtotime('+1 day', strtotime($value->finish))),
-                //'color'=>'#CC0000',
+                'title' => Equipage::model()->findByPk($value->equipage_id)->fio1,
+                'start' => $value->start_date,
+                'end' => $value->assigned_date,
+                'color' => '#' . substr(md5($value->equipage_id . 'abc'), 0, 6),
                 //'allDay'=>true,
-                //'url'=>'http://anyurl.com'
+                'url' => $this->createUrl('equipage/view', array(
+                    'id' => $value->equipage_id,
+                    ), '&'),
             );
         }
+
+
+        $itemsA[] = array(
+            'title' => 'Meeting',
+            'start' => strtotime('2015-10-09'),
+            'color' => '#CC0000',
+            'allDay' => true,
+            'url' => 'http://anyurl.com'
+        );
+        $itemsA[] = array(
+            'title' => 'Meeting reminder',
+            'start' => '2015-10-15 05:20:17',
+            'end' => '2015-10-15 05:30:17',
+            'color' => 'blue',
+        );
+
         echo CJSON::encode($items);
         Yii::app()->end();
     }
-    /**
-     * EFullCalendar.EFullCalendar
-      public function actionCalendarEvents()
-      {
-      $items[] = array(
-      'title' => 'Meeting',
-      'start' => '2012-11-23',
-      'color' => '#CC0000',
-      'allDay' => true,
-      'url' => 'http://anyurl.com'
-      );
-      $items[] = array(
-      'title' => 'Meeting reminder',
-      'start' => '2012-11-19',
-      'end' => '2012-11-22',
-      // can pass unix timestamp too
-      // 'start'=>time()
-      'color' => 'blue',
-      );
-
-      echo CJSON::encode($items);
-      Yii::app()->end();
-      }
-     *
-     * */
 // Uncomment the following methods and override them if needed
     /*
       public function filters()

@@ -1,12 +1,14 @@
 <?php
 /* @var $this RegionController */
 /* @var $dataProvider CActiveDataProvider */
+$this->pageTitle = 'Select region of destination:';
 
 ?>
 
-<h1>Select region of destination:</h1>
-<div class="search-form" style="overall-search">
-    <div class="form">
+<div class="col-lg-6" style="overall-search">
+    <div class="input-group">
+
+
 
         <?php
         $form = $this->beginWidget('CActiveForm', array(
@@ -18,25 +20,60 @@
             'enableAjaxValidation' => false,
         ));
 
-        echo $form->errorSummary($model);
+
+        echo $form->errorSummary($model, array(
+            'class' => 'label label-warning',
+        ));
+
+
+        echo $form->searchField($model, 'search_string', array(
+            'class' => 'form-control',
+            'placeholder' => 'Search location',));
 
         ?>
 
-        <div class="row">
-            <?php echo $form->textField($model, 'search_string'); ?>
-            <?php echo $form->error($model, 'search_string'); ?>
-            <?php echo CHtml::submitButton('Searching'); ?>
-        </div>
+
+        <span class="input-group-btn">
+            <?php
+            echo CHtml::submitButton('Searching', array(
+                'class' => 'btn btn-default',
+                'type' => 'button',
+            ));
+
+            ?>
+        </span>
+
+        <?php
+        echo $form->error($model, 'search_string', array(
+            'class' => 'alert alert-info',
+            'role' => 'alert',
+        ));
+
+        ?>
+
+
 
         <?php $this->endWidget(); ?>
 
     </div><!-- form -->
-</div><!-- search-form -->
-<?php
-$this->widget('zii.widgets.CListView', array(
-    'dataProvider' => $dataProvider,
-    'itemView' => '_view',
-));
 
-?>
-<br /><?php echo CHtml::button('Create', array('submit' => array('region/create'))); ?><br />
+    <?php
+    $this->widget('zii.widgets.CListView', array(
+        'dataProvider' => $dataProvider,
+        'itemView' => '_view',
+    ));
+
+    ?>
+    <br /><?php
+    echo CHtml::button('Create', array(
+        'submit' => array('region/create'),
+        'class' => 'btn btn-primary',
+    ));
+
+    ?><br />
+
+</div><!-- /.col-lg-6 -->
+
+
+
+

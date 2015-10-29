@@ -6,7 +6,7 @@ class TripController extends Controller
      * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
      * using two-column layout. See 'protected/views/layouts/column2.php'.
      */
-    public $layout = '//layouts/column2';
+    public $layout = '//layouts/combination';
 
     /**
      * Integrate script for suitable datepicker
@@ -104,7 +104,7 @@ class TripController extends Controller
         if (isset($_POST['Trip'])) {
             $model->attributes = $_POST['Trip'];
             if ($model->save())
-                $this->redirect(array('trip/index'));
+                $this->redirect(array('calendar/index'));
         }
         if ($region_id > 0) {
             $this->render('create', array(
@@ -112,7 +112,7 @@ class TripController extends Controller
                 'region' => $region,
             ));
         } else {
-            $this->redirect(array('trip/index'));
+            $this->redirect(array('site/index'));
         }
     }
 
@@ -220,6 +220,11 @@ class TripController extends Controller
     public function dispatcherOpts()
     {
         return CHtml::listData(Dispatcher::model()->findAll(), 'id', 'position');
+    }
+
+    public function actionEquipageIsAvailable($date)
+    {
+        return;
     }
 
     /**
