@@ -18,7 +18,7 @@ $form = $this->beginWidget('CActiveForm', array(
     ));
 
 ?>
-
+<p>Go back and <?php echo CHtml::link('select region', $this->createUrl('region/index')); ?> again?</p>
 <p class="note">Fields with <span class="required">*</span> are required.</p>
 
 <?php
@@ -34,12 +34,15 @@ echo $form->errorSummary($model, null, null, array(
     <?php
     echo $form->dropDownList($model, 'region_id', Region::regionOpts($region->id), array(
         'disabled' => 'on',
+        'id' => 'region_id',
         'class' => 'form-control',
     ));
 
     ?>
     <p class="text-danger"><?php echo $form->error($model, 'region_id'); ?></p>
 </div><!-- row -->
+<br>
+<!-- --------------------TEST END ----------------- -->
 
 <div class="form-group field-register-name requirement">
     <?php
@@ -47,15 +50,18 @@ echo $form->errorSummary($model, null, null, array(
     ));
 
     ?>
+
     <?php
     echo $form->dateField($model, 'start_date', array(
         'class' => 'form-control',
         'value' => date('Y-m-d'),
-        'data-provide' => 'datepicker',
+        'id' => 'Trip_start_date',
         'type' => 'text',
     ));
 
     ?>
+
+
     <?php
     echo $form->error($model, 'start_date', array(
         'class' => 'alert alert-warning',
@@ -64,6 +70,37 @@ echo $form->errorSummary($model, null, null, array(
 
     ?>
 </div><!-- row -->
+<?php
+echo CHtml::ajaxLink('Find all available equipages', array('availequipages'), array(
+    'type' => "POST",
+    'data' => array(
+        'start_date' => "js:function(){a = $('#Trip_start_date').val();return a;}",
+        'region_id' => "js:function(){b = $('#region_id').val();return b;}",
+    ),
+    'success' => "js:function(data){
+       //var param = JSON.parse (data);
+       //$('#delivery_date').html(param.arrival_date);
+       //$('#forAjaxRefresh').html(param.available_equipages);
+}"
+    ), array(
+    'color' => 'orange',
+    //'class' => 'label',
+));
+
+?>
+<div id="forAjaxRefresh"></div>
+<div class="form-group field-register-name requirement">
+    <?php
+    echo $form->labelEx($model, 'assigned_date', array(
+    ));
+
+    ?>
+    <div class="form-control delivery_date" id="delivery_date"></div>
+
+</div><!-- row -->
+
+
+
 
 <div class="form-group field-register-text requirementd">
     <?php echo $form->labelEx($model, 'equipage_id'); ?>
@@ -71,6 +108,7 @@ echo $form->errorSummary($model, null, null, array(
     echo $form->dropDownList($model, 'equipage_id', $this->equipageOpts(), array(
         'empty' => 'will selected*',
         'class' => 'form-control',
+        'id' => 'equipage_delivery'
     ));
 
     ?>

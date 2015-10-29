@@ -68,7 +68,8 @@ class TripController extends Controller
                     'update',
                     'admin',
                     'delete',
-                    'test',
+                    'whattimeisit',
+                    'availequipages',
                 ),
                 'users' => array('admin', 'dispatcher'),
             ),
@@ -222,15 +223,82 @@ class TripController extends Controller
         return CHtml::listData(Dispatcher::model()->findAll(), 'id', 'position');
     }
 
-    public function actionEquipageIsAvailable($date)
+    /**
+     * Алгоритм. Этот метод выводит те экипажи которые не задействованы
+     * в этом промежутке в других доставках.
+     * @var $_POST start_date
+     * @var $_POST region_id
+     * Описание алгоритма:
+     * 1) Определяем время промежутка как:
+     *    [дата начала поездки] + [время выгрузки] + [время возврата];
+     * 2) Запрашиваем все экипажи из БД которх нет в результате запроса поездок
+     *    в полученном промежутке;
+     * 3) Формируем результат для отправки в формате select option для dropdown полей.
+     * */
+    public function actionAvailequipages()
     {
-        return;
+
+// Получаем и подготавливаем принятые данные:
+        if (isset($_POST)) {
+//получаем длительности
+            preg_match("/\d{4}-\d{2}-\d{2}/", $_POST['start_date'], $str);
+            $start_date = $str[0];
+            $region_id = intval($_POST['region_id']);
+
+            $obRegion = Region::model()->findByPk($region_id);
+            $dateClientArrival = LogisticCore::calcDateToClientArrival(
+                    $start_date, $obRegion->duration);
+
+//    1) Определяем время промежутка как:
+//    [дата начала поездки] + [время выгрузки] + [время возврата];
+
+            $finish_date = LogisticCore::calcDateToHomeArrival($start_date, $obRegion->duration);
+            /*
+             * select equipage_id from trips
+             * where ('2015-10-23' BETWEEN start_date AND '2015-10-25')
+             * or ('2015-10-24' BETWEEN start_date AND '2015-10-25')';
+             */
+            $sql = 'select dataready.equipage_id from (select trips.equipage_id, '
+                . 'trips.start_date, date_format(date_add(trips.assigned_date,INTERVAL ('
+                . '@my + 2 * (select regions.duration from regions where '
+                . "regions.id = trips.region_id)) HOUR),'%Y-%m-%d') as finish_date "
+                . 'from trips) as dataready '
+                . 'where (' . $start_date . ' BETWEEN dataready.start_date and dataready.finish_date) '
+                . 'OR (' . $finish_date . ' BETWEEN dataready.start_date and dataready.finish_date)';
+            $connection = Yii::app()->db;
+            $result = $connection->createCommand($sql)->queryAll();
+            var_dump($result);
+            Yii::app()->end();
+
+//   2) Запрашиваем все экипажи из БД которых нет в результате запроса поездок на указанный период
+//    в полученном промежутке;
+            $data = Equipage::model()->findAll('id=:region_id', array(
+                ':region_id' => (int) $_POST['region_id'],
+            ));
+//   3) Формируем результат для отправки в формате select option для dropdown полей.
+
+            $data = CHtml::listData($data, 'id', 'fio1');
+
+//Подготовка данных к отправке в нужном формате:
+            $available_equipages = "<option value=''>Select equipage</option>";
+            foreach ($data as $value => $city_name)
+                $available_equipages .= CHtml::tag('option', array(
+                        'value' => $value), CHtml::encode($city_name), true
+                );
+            /* echo CJSON::encode(array(
+              'arrival_date' => date('H:i:s'),
+              'available_equipages' => $available_equipages,
+              )); */
+        } else {/*
+          echo CJSON::encode(array(
+          'arrival_date' => 'error 500',
+          'available_equipages' => 'error 500',
+          )); */
+        }
+        Yii::app()->end();
     }
 
-    /**
-     * Some testing in application
-     */
-    public function actionTest()
+    public function actionWhattimeisit()
     {
         echo date('H:i:s');
         Yii::app()->end();

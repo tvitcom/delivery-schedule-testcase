@@ -43,7 +43,8 @@ class RegionController extends Controller
                     'create',
                     'update',
                     'admin',
-                    'delete'
+                    'delete',
+                    'loadcities',
                 ),
                 'users' => array('admin', 'dispatcher'),
             ),

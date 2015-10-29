@@ -88,10 +88,10 @@ class Trip extends CActiveRecord
         return array(
             'id' => 'ID',
             'region_id' => 'Region_id',
-            'equipage_id' => 'Equipage_id',
+            'equipage_id' => 'Select equipage',
             'start_date' => 'Start Date',
             'assigned_date' => 'Assigned Date',
-            'dispatcher_id' => 'Dispatcher_id',
+            'dispatcher_id' => 'Dispatcher',
             'is_full' => 'Loaded',
         );
     }

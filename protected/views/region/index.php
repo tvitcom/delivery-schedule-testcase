@@ -8,8 +8,6 @@ $this->pageTitle = 'Select region of destination:';
 <div class="col-lg-6" style="overall-search">
     <div class="input-group">
 
-
-
         <?php
         $form = $this->beginWidget('CActiveForm', array(
             'id' => 'overall-search-form',
@@ -20,18 +18,15 @@ $this->pageTitle = 'Select region of destination:';
             'enableAjaxValidation' => false,
         ));
 
-
         echo $form->errorSummary($model, array(
             'class' => 'label label-warning',
         ));
-
 
         echo $form->searchField($model, 'search_string', array(
             'class' => 'form-control',
             'placeholder' => 'Search location',));
 
         ?>
-
 
         <span class="input-group-btn">
             <?php

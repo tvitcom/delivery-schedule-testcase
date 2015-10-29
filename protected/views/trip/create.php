@@ -23,7 +23,7 @@ $this->pageTitle = 'Create delivery to ' . $region->name;
             Neque porro quisquam est, <?php
             echo CHtml::ajaxLink(
                 'What time is it?', // the link body (it will NOT be HTML-encoded.)
-                array('trip/test'), // the URL for the AJAX request. If empty, it is assumed to be the current URL.
+                array('trip/whattimeisit'), // the URL for the AJAX request. If empty, it is assumed to be the current URL.
                 array(
                 'update' => '#req_time'
                 )
