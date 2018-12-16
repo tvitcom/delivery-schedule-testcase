@@ -12,10 +12,11 @@ Desktop.ini
 # composer
 vendor/*
 composer.phar
-composer.lock
+#composer.lock
 
 # netbeanse
-nbproject/*
+/nbproject
+/vendor
 *.swp
 */*.swp
 nbactions.xml
