@@ -40,7 +40,7 @@ echo $form->errorSummary($model, null, null, array(
 
     ?>
     <p class="text-danger"><?php echo $form->error($model, 'region_id'); ?></p>
-</div><!-- row -->
+</div><!-- .form-group field-register-name requirementd -->
 <br>
 <!-- --------------------TEST END ----------------- -->
 
@@ -84,7 +84,6 @@ echo CHtml::ajaxLink('Find all available equipages', array('availequipages'), ar
 }"
     ), array(
     'color' => 'orange',
-    //'class' => 'label',
 ));
 
 ?>
@@ -97,7 +96,7 @@ echo CHtml::ajaxLink('Find all available equipages', array('availequipages'), ar
     ?>
     <div class="form-control delivery_date" id="delivery_date"></div>
 
-</div><!-- row -->
+</div><!-- form-group field-register-name requirement-->
 
 
 

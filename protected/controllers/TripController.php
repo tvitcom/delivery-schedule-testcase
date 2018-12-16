@@ -1,7 +1,7 @@
 <?php
 
-class TripController extends Controller
-{
+class TripController extends Controller {
+
     /**
      * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
      * using two-column layout. See 'protected/views/layouts/column2.php'.
@@ -13,8 +13,7 @@ class TripController extends Controller
      * @param type $action
      * @return register script and doing parent before action
      */
-    protected function beforeAction($action)
-    {
+    protected function beforeAction($action) {
         $cs = Yii::app()->clientScript;
         $cs->packages = array(
             'pickmeup' => array(
@@ -32,8 +31,7 @@ class TripController extends Controller
     /**
      * @return array action filters
      */
-    public function filters()
-    {
+    public function filters() {
         return array(
             'accessControl', // perform access control for CRUD operations
             'postOnly + delete', // we only allow deletion via POST request
@@ -45,8 +43,7 @@ class TripController extends Controller
      * This method is used by the 'accessControl' filter.
      * @return array access control rules
      */
-    public function accessRules()
-    {
+    public function accessRules() {
         return array(
             /*
               array('allow',  // allow all users to perform 'index' and 'view'
@@ -83,8 +80,7 @@ class TripController extends Controller
      * Displays a particular model.
      * @param integer $id the ID of the model to be displayed
      */
-    public function actionView($id)
-    {
+    public function actionView($id) {
         $this->render('view', array(
             'model' => $this->loadModel($id),
         ));
@@ -94,8 +90,7 @@ class TripController extends Controller
      * Creates a new model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
-    public function actionCreate($region_id)
-    {
+    public function actionCreate($region_id) {
         $model = new Trip;
         $region = Region::model()->findByPk($region_id);
 
@@ -122,8 +117,7 @@ class TripController extends Controller
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id the ID of the model to be updated
      */
-    public function actionUpdate($id)
-    {
+    public function actionUpdate($id) {
         $model = $this->loadModel($id);
 
 // Uncomment the following line if AJAX validation is needed
@@ -145,8 +139,7 @@ class TripController extends Controller
      * If deletion is successful, the browser will be redirected to the 'admin' page.
      * @param integer $id the ID of the model to be deleted
      */
-    public function actionDelete($id)
-    {
+    public function actionDelete($id) {
         $this->loadModel($id)->delete();
 
 // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
@@ -157,8 +150,7 @@ class TripController extends Controller
     /**
      * Lists all models.
      */
-    public function actionIndex()
-    {
+    public function actionIndex() {
         $dataProvider = new CActiveDataProvider('Trip');
         $this->render('index', array(
             'dataProvider' => $dataProvider,
@@ -168,8 +160,7 @@ class TripController extends Controller
     /**
      * Manages all models.
      */
-    public function actionAdmin()
-    {
+    public function actionAdmin() {
         $model = new Trip('search');
         $model->unsetAttributes();  // clear any default values
         if (isset($_GET['Trip']))
@@ -187,8 +178,7 @@ class TripController extends Controller
      * @return Trip the loaded model
      * @throws CHttpException
      */
-    public function loadModel($id)
-    {
+    public function loadModel($id) {
         $model = Trip::model()->findByPk($id);
         if ($model === null)
             throw new CHttpException(404, 'The requested page does not exist.');
@@ -199,8 +189,7 @@ class TripController extends Controller
      * Performs the AJAX validation.
      * @param Trip $model the model to be validated
      */
-    protected function performAjaxValidation($model)
-    {
+    protected function performAjaxValidation($model) {
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'trip-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
@@ -210,16 +199,14 @@ class TripController extends Controller
     /**
      * Static function for dropDownList _form of Trip controller
      */
-    public function equipageOpts()
-    {
+    public function equipageOpts() {
         return CHtml::listData(Equipage::model()->findAll('in_route is null'), 'id', 'fio1');
     }
 
     /**
      * Static function for dropDownList _form of Trip controller
      */
-    public function dispatcherOpts()
-    {
+    public function dispatcherOpts() {
         return CHtml::listData(Dispatcher::model()->findAll(), 'id', 'position');
     }
 
@@ -235,8 +222,7 @@ class TripController extends Controller
      *    в полученном промежутке;
      * 3) Формируем результат для отправки в формате select option для dropdown полей.
      * */
-    public function actionAvailequipages()
-    {
+    public function actionAvailequipages() {
 
 // Получаем и подготавливаем принятые данные:
         if (isset($_POST)) {
@@ -267,7 +253,7 @@ class TripController extends Controller
                 . 'OR (' . $finish_date . ' BETWEEN dataready.start_date and dataready.finish_date)';
             $connection = Yii::app()->db;
             $result = $connection->createCommand($sql)->queryAll();
-            var_dump($result);
+            //var_dump($result);
             Yii::app()->end();
 
 //   2) Запрашиваем все экипажи из БД которых нет в результате запроса поездок на указанный период
@@ -277,7 +263,7 @@ class TripController extends Controller
             ));
 //   3) Формируем результат для отправки в формате select option для dropdown полей.
 
-            $data = CHtml::listData($data, 'id', 'fio1');
+            $data = CHtml::listData($data, 'id', 'fio1' . 'fio2');
 
 //Подготовка данных к отправке в нужном формате:
             $available_equipages = "<option value=''>Select equipage</option>";
@@ -298,9 +284,9 @@ class TripController extends Controller
         Yii::app()->end();
     }
 
-    public function actionWhattimeisit()
-    {
+    public function actionWhattimeisit() {
         echo date('H:i:s');
         Yii::app()->end();
     }
+
 }
