@@ -1,6 +1,5 @@
 <?php
 /* @var $this SiteController */
-
 ?>
 <header>
     <h1><?php echo Yii::t('site', 'Coming soon!'); ?></h1>

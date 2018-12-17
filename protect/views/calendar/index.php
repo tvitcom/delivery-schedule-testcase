@@ -1,7 +1,6 @@
 <?php
 /* @var $this CalendarController */
 $this->pageTitle = 'Delivery schedule';
-
 ?>
 
 <div class="calendar">
@@ -40,13 +39,11 @@ $this->pageTitle = 'Delivery schedule';
         //'eventMouseover' => new CJavaScriptExpression("mouseover"),
         ),
     ));
-
     ?>
 </div><br />
-<?php
-echo CHtml::linkButton('New task for delivery', array(
-    'class' => 'btn btn-md btn-success',
-    'href' => $this->createUrl('region/index'),
-));
-
-?>
+    <?php
+    echo CHtml::linkButton('New task for delivery', array(
+        'class' => 'btn btn-md btn-success',
+        'href' => $this->createUrl('region/index'),
+    ));
+    ?>

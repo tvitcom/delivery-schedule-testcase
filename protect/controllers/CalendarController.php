@@ -1,21 +1,19 @@
 <?php
 
-class CalendarController extends Controller
-{
+class CalendarController extends Controller {
+
     /**
      * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
      * using two-column layout. See 'protected/views/layouts/column2.php'.
      */
     public $layout = '//layouts/combination';
 
-    public function actionIndex()
-    {
+    public function actionIndex() {
         $this->render('index');
     }
 
     // efullcalendar.EFullCalendar
-    public function actionCalendarEvents()
-    {
+    public function actionCalendarEvents() {
         $items = array();
         $model = Trip::model()->findAll();
         foreach ($model as $value) {
@@ -49,6 +47,7 @@ class CalendarController extends Controller
         echo CJSON::encode($items);
         Yii::app()->end();
     }
+
 // Uncomment the following methods and override them if needed
     /*
       public function filters()

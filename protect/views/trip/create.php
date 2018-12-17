@@ -3,7 +3,6 @@
 /* @var $model Trip */
 /* @var $region Region */
 $this->pageTitle = 'Create delivery to ' . $region->name;
-
 ?>
 
 <div class="col-md-7">
@@ -21,15 +20,14 @@ $this->pageTitle = 'Create delivery to ' . $region->name;
         <blockquote>
             <b>Administrator</b><br>
             Neque porro quisquam est, <?php
-            echo CHtml::ajaxLink(
-                'What time is it?', // the link body (it will NOT be HTML-encoded.)
-                array('trip/whattimeisit'), // the URL for the AJAX request. If empty, it is assumed to be the current URL.
-                array(
-                'update' => '#req_time'
-                )
-            );
-
-            ?>
+echo CHtml::ajaxLink(
+    'What time is it?', // the link body (it will NOT be HTML-encoded.)
+    array('trip/whattimeisit'), // the URL for the AJAX request. If empty, it is assumed to be the current URL.
+    array(
+    'update' => '#req_time'
+    )
+);
+?>
 
             <span id="req_time" class="well-sm">
                 test ajax!
@@ -41,12 +39,11 @@ $this->pageTitle = 'Create delivery to ' . $region->name;
 <div class="col-md-5">
     <h4>Delivery Form:</h4>
     <div class="well well-sm">
-        <?php
-        $this->renderPartial('_form', array(
-            'model' => $model,
-            'region' => $region,
-        ));
-
-        ?>
+<?php
+$this->renderPartial('_form', array(
+    'model' => $model,
+    'region' => $region,
+));
+?>
     </div>
 </div><!-- Registration form -->

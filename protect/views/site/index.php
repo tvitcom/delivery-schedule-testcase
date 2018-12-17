@@ -2,7 +2,6 @@
 /* @var $this SiteController */
 
 $this->pageTitle = Yii::app()->name;
-
 ?>
 
 <h4>Тестовое задание</h4>

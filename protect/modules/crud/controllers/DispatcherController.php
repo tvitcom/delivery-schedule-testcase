@@ -1,7 +1,7 @@
 <?php
 
-class DispatcherController extends Controller
-{
+class DispatcherController extends Controller {
+
     /**
      * @var string the default layout for the views. Defaults to '//layouts/dashboard', meaning
      * using two-column layout. See 'protected/views/layouts/column2.php'.
@@ -11,8 +11,7 @@ class DispatcherController extends Controller
     /**
      * @return array action filters
      */
-    public function filters()
-    {
+    public function filters() {
         return array(
             'accessControl', // perform access control for CRUD operations
             'postOnly + delete', // we only allow deletion via POST request
@@ -24,8 +23,7 @@ class DispatcherController extends Controller
      * This method is used by the 'accessControl' filter.
      * @return array access control rules
      */
-    public function accessRules()
-    {
+    public function accessRules() {
         return array(
             /*
               array('allow',  // allow all users to perform 'index' and 'view' actions
@@ -50,8 +48,7 @@ class DispatcherController extends Controller
      * Displays a particular model.
      * @param integer $id the ID of the model to be displayed
      */
-    public function actionView($id)
-    {
+    public function actionView($id) {
         $this->render('view', array(
             'model' => $this->loadModel($id),
         ));
@@ -61,8 +58,7 @@ class DispatcherController extends Controller
      * Creates a new model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
-    public function actionCreate()
-    {
+    public function actionCreate() {
         $model = new Dispatcher;
 
         // Uncomment the following line if AJAX validation is needed
@@ -85,8 +81,7 @@ class DispatcherController extends Controller
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id the ID of the model to be updated
      */
-    public function actionUpdate($id)
-    {
+    public function actionUpdate($id) {
         $model = $this->loadModel($id);
 
         // Uncomment the following line if AJAX validation is needed
@@ -109,8 +104,7 @@ class DispatcherController extends Controller
      * If deletion is successful, the browser will be redirected to the 'admin' page.
      * @param integer $id the ID of the model to be deleted
      */
-    public function actionDelete($id)
-    {
+    public function actionDelete($id) {
         if (Yii::app()->request->isPostRequest) {
             // we only allow deletion via POST request
             $this->loadModel($id)->delete();
@@ -127,8 +121,7 @@ class DispatcherController extends Controller
     /**
      * Lists all models.
      */
-    public function actionIndex()
-    {
+    public function actionIndex() {
         $dataProvider = new CActiveDataProvider('Dispatcher', array(
             'criteria' => array(
                 'condition' => 'position is not null',
@@ -143,8 +136,7 @@ class DispatcherController extends Controller
     /**
      * Manages all models.
      */
-    public function actionAdmin()
-    {
+    public function actionAdmin() {
         $model = new Dispatcher('search');
         $model->unsetAttributes();  // clear any default values
         if (isset($_GET['Dispatcher'])) {
@@ -163,8 +155,7 @@ class DispatcherController extends Controller
      * @return Dispatcher the loaded model
      * @throws CHttpException
      */
-    public function loadModel($id)
-    {
+    public function loadModel($id) {
         $model = Dispatcher::model()->findByPk($id);
         if ($model === null) {
             throw new CHttpException(404, 'The requested page does not exist.');
@@ -176,11 +167,11 @@ class DispatcherController extends Controller
      * Performs the AJAX validation.
      * @param Dispatcher $model the model to be validated
      */
-    protected function performAjaxValidation($model)
-    {
+    protected function performAjaxValidation($model) {
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'dispatcher-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }
     }
+
 }

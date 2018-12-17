@@ -2,7 +2,6 @@
 /* @var $this RegionController */
 /* @var $dataProvider CActiveDataProvider */
 $this->pageTitle = 'Select region of destination:';
-
 ?>
 
 <div class="col-lg-6" style="overall-search">
@@ -25,26 +24,23 @@ $this->pageTitle = 'Select region of destination:';
         echo $form->searchField($model, 'search_string', array(
             'class' => 'form-control',
             'placeholder' => 'Search location',));
-
         ?>
 
         <span class="input-group-btn">
-            <?php
-            echo CHtml::submitButton('Searching', array(
-                'class' => 'btn btn-default',
-                'type' => 'button',
-            ));
-
-            ?>
+<?php
+echo CHtml::submitButton('Searching', array(
+    'class' => 'btn btn-default',
+    'type' => 'button',
+));
+?>
         </span>
 
-        <?php
-        echo $form->error($model, 'search_string', array(
-            'class' => 'alert alert-info',
-            'role' => 'alert',
-        ));
-
-        ?>
+            <?php
+            echo $form->error($model, 'search_string', array(
+                'class' => 'alert alert-info',
+                'role' => 'alert',
+            ));
+            ?>
 
 
 
@@ -52,19 +48,17 @@ $this->pageTitle = 'Select region of destination:';
 
     </div><!-- form -->
 
-    <?php
-    $this->widget('zii.widgets.CListView', array(
-        'dataProvider' => $dataProvider,
-        'itemView' => '_view',
-    ));
-
-    ?>
+        <?php
+        $this->widget('zii.widgets.CListView', array(
+            'dataProvider' => $dataProvider,
+            'itemView' => '_view',
+        ));
+        ?>
     <br /><?php
     echo CHtml::button('Create', array(
         'submit' => array('region/create'),
         'class' => 'btn btn-primary',
     ));
-
     ?><br />
 
 </div><!-- /.col-lg-6 -->

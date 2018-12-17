@@ -25,7 +25,6 @@ $('.search-form form').submit(function(){
 	return false;
 });
 ");
-
 ?>
 
 <h1>Manage Regions</h1>
@@ -36,7 +35,6 @@ $('.search-form form').submit(function(){
     $this->renderPartial('_search', array(
         'model' => $model,
     ));
-
     ?>
 </div><!-- search-form -->
 
@@ -55,5 +53,4 @@ $this->widget('\TbGridView', array(
         ),
     ),
 ));
-
 ?>

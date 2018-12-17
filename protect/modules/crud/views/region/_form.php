@@ -2,7 +2,6 @@
 /* @var $this RegionController */
 /* @var $model Region */
 /* @var $form TbActiveForm */
-
 ?>
 
 <div class="form">
@@ -16,12 +15,11 @@
         // See class documentation of CActiveForm for details on this.
         'enableAjaxValidation' => false,
     ));
-
     ?>
 
     <p class="help-block">Fields with <span class="required">*</span> are required.</p>
 
-    <?php echo $form->errorSummary($model); ?>
+<?php echo $form->errorSummary($model); ?>
 
     <?php echo $form->textFieldControlGroup($model, 'name', array('span' => 5, 'maxlength' => 52)); ?>
 
@@ -32,15 +30,14 @@
     <?php echo $form->textAreaControlGroup($model, 'pathway', array('rows' => 6, 'span' => 8)); ?>
 
     <div class="form-actions">
-        <?php
-        echo TbHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array(
-            'color' => TbHtml::BUTTON_COLOR_PRIMARY,
-            'size' => TbHtml::BUTTON_SIZE_LARGE,
-        ));
-
-        ?>
+<?php
+echo TbHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array(
+    'color' => TbHtml::BUTTON_COLOR_PRIMARY,
+    'size' => TbHtml::BUTTON_SIZE_LARGE,
+));
+?>
     </div>
 
-    <?php $this->endWidget(); ?>
+        <?php $this->endWidget(); ?>
 
 </div><!-- form -->

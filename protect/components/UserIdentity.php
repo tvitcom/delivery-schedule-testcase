@@ -5,8 +5,8 @@
  * It contains the authentication method that checks if the provided
  * data can identity the user.
  */
-class UserIdentity extends CUserIdentity
-{
+class UserIdentity extends CUserIdentity {
+
     /**
      * Authenticates a user.
      * The example implementation makes sure if the username and password
@@ -17,8 +17,7 @@ class UserIdentity extends CUserIdentity
      */
     private $_id;
 
-    public function authenticate()
-    {
+    public function authenticate() {
         $user_record = Dispatcher::model()->findByAttributes(array(
             'login' => $this->username
         ));
@@ -36,8 +35,8 @@ class UserIdentity extends CUserIdentity
         return $this->errorCode === self::ERROR_NONE;
     }
 
-    public function getId()
-    {
+    public function getId() {
         return $this->_id;
     }
+
 }

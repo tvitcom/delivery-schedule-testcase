@@ -1,7 +1,6 @@
 <?php
 /* @var $this RegionController */
 /* @var $data Region */
-
 ?>
 
 <div class="view">

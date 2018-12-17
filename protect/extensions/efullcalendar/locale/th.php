@@ -1,6 +1,7 @@
 <?php
+
 return array(
-    'monthNames'=>array(
+    'monthNames' => array(
         'มกราคม',
         'กุมภาพันธ์',
         'มีนาคม',
@@ -14,7 +15,7 @@ return array(
         'พฤศจิกายน',
         'ธันวาคม'
     ),
-    'monthNamesShort'=>array(
+    'monthNamesShort' => array(
         'ม.ค.',
         'ก.พ.',
         'มี.ค.',
@@ -28,8 +29,8 @@ return array(
         'พ.ย.',
         'ธ.ค.'
     ),
-    'firstDay'=>0,
-    'dayNames'=>array(
+    'firstDay' => 0,
+    'dayNames' => array(
         'อาทิตย์',
         'จันทร์',
         'อังคาร',
@@ -38,8 +39,8 @@ return array(
         'ศุกร์',
         'เสาร์'
     ),
-    'dayNamesShort'=>array(
-       'อา',
+    'dayNamesShort' => array(
+        'อา',
         'จ',
         'อ',
         'พ',
@@ -47,12 +48,11 @@ return array(
         'ศ',
         'ส'
     ),
-    'buttonText'=>array(
-        'today'=>'วันนี้',
-        'month'=>'เดือน',
-        'week'=>'สัปดาห์',
-        'day'=>'วัน'
+    'buttonText' => array(
+        'today' => 'วันนี้',
+        'month' => 'เดือน',
+        'week' => 'สัปดาห์',
+        'day' => 'วัน'
     ),
 );
-
 ?>

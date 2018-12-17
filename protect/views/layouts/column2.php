@@ -17,7 +17,6 @@
                 'htmlOptions' => array('class' => 'operations'),
             ));
             $this->endWidget();
-
             ?>
         </div><!--well well-sm -->
     </div>

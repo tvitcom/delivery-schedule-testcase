@@ -35,7 +35,6 @@ $pillsOptions = array(
         'active' => (Yii::app()->controller->id == 'default' && Yii::app()
         ->controller->action->id == 'page') ? true : false),
 );
-
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2) : 'en'; ?>">
@@ -112,7 +111,6 @@ $pillsOptions = array(
                     echo TbHtml::pills($pillsOptions, array(
                         'class' => 'nav nav-pills pull-right',
                     ));
-
                     ?>
 
 
@@ -120,17 +118,15 @@ $pillsOptions = array(
                 <h3 class="text-muted"><?php echo Yii::app()->params['CompanyName']; ?></h3>
             </div>
 
-            <?php echo $content; ?>
+<?php echo $content; ?>
 
             <footer class="footer">
                 <p>© <?php echo date('Y'); ?> <?php
-                    echo (!Yii::app()->user->isGuest) ? 'User' : 'Guest';
-                    echo ' mode';
-
-                    ?>
+echo (!Yii::app()->user->isGuest) ? 'User' : 'Guest';
+echo ' mode';
+?>
                     Отработало за
                     <?php echo sprintf('%0.5f', Yii::getLogger()->getExecutionTime());
-
                     ?>
                     с. Скушано памяти:
                     <?php echo round(memory_get_peak_usage() / (1024 * 1024), 2) . "MB"; ?>
@@ -140,7 +136,7 @@ $pillsOptions = array(
         </div> <!-- /container -->
 
         <!-- =================== Bootstrap core JavaScript ===================== -->
-        <?php Yii::app()->bootstrap->register(); ?>
+<?php Yii::app()->bootstrap->register(); ?>
 
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/ie10-viewport-bug-workaround.js"></script>

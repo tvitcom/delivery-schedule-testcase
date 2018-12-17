@@ -3,7 +3,6 @@
  * @var $countEquipages  - A count equipages
  * @var $this SiteController
  */
-
 ?>
 <div class = "jumbotron">
     <h2>Today see small example now!</h2>

@@ -18,7 +18,6 @@
                 'htmlOptions' => array('class' => 'nav nav-pills'),
             ));
             $this->endWidget();
-
             ?>
         </div><!--well well-sm -->
     </div>

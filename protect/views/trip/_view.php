@@ -1,7 +1,6 @@
 <?php
 /* @var $this TripController */
 /* @var $data Trip */
-
 ?>
 
 <div class="view">

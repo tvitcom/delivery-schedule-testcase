@@ -1,7 +1,6 @@
 <?php
 /* @var $this DispatcherController */
 /* @var $data Dispatcher */
-
 ?>
 
 <div class="view">

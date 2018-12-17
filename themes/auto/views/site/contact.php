@@ -7,7 +7,6 @@ $this->pageTitle = Yii::app()->name . ' - Contact Us';
 $this->breadcrumbs = array(
     'Contact',
 );
-
 ?>
 
 <h1>Contact Us</h1>
@@ -15,7 +14,7 @@ $this->breadcrumbs = array(
 <?php if (Yii::app()->user->hasFlash('contact')): ?>
 
     <div class="flash-success">
-    <?php echo Yii::app()->user->getFlash('contact'); ?>
+        <?php echo Yii::app()->user->getFlash('contact'); ?>
     </div>
 
 <?php else: ?>
@@ -34,12 +33,11 @@ $this->breadcrumbs = array(
                 'validateOnSubmit' => true,
             ),
         ));
-
         ?>
 
         <p class="note">Fields with <span class="required">*</span> are required.</p>
 
-            <?php echo $form->errorSummary($model); ?>
+    <?php echo $form->errorSummary($model); ?>
 
         <div class="row">
     <?php echo $form->labelEx($model, 'name'); ?>
@@ -60,23 +58,23 @@ $this->breadcrumbs = array(
         </div>
 
         <div class="row">
-        <?php echo $form->labelEx($model, 'body'); ?>
-        <?php echo $form->textArea($model, 'body', array('rows' => 6, 'cols' => 50)); ?>
+    <?php echo $form->labelEx($model, 'body'); ?>
+            <?php echo $form->textArea($model, 'body', array('rows' => 6, 'cols' => 50)); ?>
             <?php echo $form->error($model, 'body'); ?>
         </div>
 
-                <?php if (CCaptcha::checkRequirements()): ?>
+    <?php if (CCaptcha::checkRequirements()): ?>
             <div class="row">
-        <?php echo $form->labelEx($model, 'verifyCode'); ?>
+            <?php echo $form->labelEx($model, 'verifyCode'); ?>
                 <div>
                 <?php $this->widget('CCaptcha'); ?>
-                <?php echo $form->textField($model, 'verifyCode'); ?>
+                    <?php echo $form->textField($model, 'verifyCode'); ?>
                 </div>
                 <div class="hint">Please enter the letters as they are shown in the image above.
                     <br/>Letters are not case-sensitive.</div>
-                <?php echo $form->error($model, 'verifyCode'); ?>
+        <?php echo $form->error($model, 'verifyCode'); ?>
             </div>
-    <?php endif; ?>
+            <?php endif; ?>
 
         <div class="row buttons">
     <?php echo CHtml::submitButton('Submit'); ?>

@@ -1,7 +1,6 @@
 <?php
 /* @var $this RegionController */
 /* @var $model Region */
-
 ?>
 
 <h1>View Region #<?php echo $model->id; ?></h1>
@@ -18,5 +17,4 @@ $this->widget('zii.widgets.CDetailView', array(
         'pathway',
     ),
 ));
-
 ?>

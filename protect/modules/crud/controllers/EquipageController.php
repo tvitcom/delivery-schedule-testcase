@@ -1,7 +1,7 @@
 <?php
 
-class EquipageController extends Controller
-{
+class EquipageController extends Controller {
+
     /**
      * @var string the default layout for the views. Defaults to '//layouts/dashboard', meaning
      * using two-column layout. See 'protected/views/layouts/column2.php'.
@@ -11,8 +11,7 @@ class EquipageController extends Controller
     /**
      * @return array action filters
      */
-    public function filters()
-    {
+    public function filters() {
         return array(
             'accessControl', // perform access control for CRUD operations
             'postOnly + delete', // we only allow deletion via POST request
@@ -24,8 +23,7 @@ class EquipageController extends Controller
      * This method is used by the 'accessControl' filter.
      * @return array access control rules
      */
-    public function accessRules()
-    {
+    public function accessRules() {
         return array(
             /*
               array('allow',  // allow all users to perform 'index' and 'view' actions
@@ -50,8 +48,7 @@ class EquipageController extends Controller
      * Displays a particular model.
      * @param integer $id the ID of the model to be displayed
      */
-    public function actionView($id)
-    {
+    public function actionView($id) {
         $this->render('view', array(
             'model' => $this->loadModel($id),
         ));
@@ -61,8 +58,7 @@ class EquipageController extends Controller
      * Creates a new model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
-    public function actionCreate()
-    {
+    public function actionCreate() {
         $model = new Equipage;
 
         // Uncomment the following line if AJAX validation is needed
@@ -85,8 +81,7 @@ class EquipageController extends Controller
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id the ID of the model to be updated
      */
-    public function actionUpdate($id)
-    {
+    public function actionUpdate($id) {
         $model = $this->loadModel($id);
 
         // Uncomment the following line if AJAX validation is needed
@@ -109,8 +104,7 @@ class EquipageController extends Controller
      * If deletion is successful, the browser will be redirected to the 'admin' page.
      * @param integer $id the ID of the model to be deleted
      */
-    public function actionDelete($id)
-    {
+    public function actionDelete($id) {
         if (Yii::app()->request->isPostRequest) {
             // we only allow deletion via POST request
             $this->loadModel($id)->delete();
@@ -127,8 +121,7 @@ class EquipageController extends Controller
     /**
      * Lists all models.
      */
-    public function actionIndex()
-    {
+    public function actionIndex() {
         $dataProvider = new CActiveDataProvider('Equipage');
         $this->render('index', array(
             'dataProvider' => $dataProvider,
@@ -138,8 +131,7 @@ class EquipageController extends Controller
     /**
      * Manages all models.
      */
-    public function actionAdmin()
-    {
+    public function actionAdmin() {
         $model = new Equipage('search');
         $model->unsetAttributes();  // clear any default values
         if (isset($_GET['Equipage'])) {
@@ -158,8 +150,7 @@ class EquipageController extends Controller
      * @return Equipage the loaded model
      * @throws CHttpException
      */
-    public function loadModel($id)
-    {
+    public function loadModel($id) {
         $model = Equipage::model()->findByPk($id);
         if ($model === null) {
             throw new CHttpException(404, 'The requested page does not exist.');
@@ -171,11 +162,11 @@ class EquipageController extends Controller
      * Performs the AJAX validation.
      * @param Equipage $model the model to be validated
      */
-    protected function performAjaxValidation($model)
-    {
+    protected function performAjaxValidation($model) {
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'equipage-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }
     }
+
 }

@@ -12,7 +12,6 @@ $this->menu = array(
     array('label' => 'List Dispatcher', 'url' => array('index')),
     array('label' => 'Create Dispatcher', 'url' => array('create')),
 );
-
 ?>
 
 <h1>Manage Dispatchers</h1>
@@ -32,5 +31,4 @@ $this->widget('\TbGridView', array(
         ),
     ),
 ));
-
 ?>

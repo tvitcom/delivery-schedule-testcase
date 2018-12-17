@@ -1,6 +1,5 @@
 <?php
 /* @var $this SiteController */
-
 ?>
 
 <header>

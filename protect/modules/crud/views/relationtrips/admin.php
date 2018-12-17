@@ -25,18 +25,16 @@ $('.search-form form').submit(function(){
 	return false;
 });
 ");
-
 ?>
 
 <h1>Manage Relationtrips</h1>
 
-    <?php echo CHtml::link('Advanced Search', '#', array('class' => 'search-button btn')); ?>
+<?php echo CHtml::link('Advanced Search', '#', array('class' => 'search-button btn')); ?>
 <div class="search-form" style="display:none">
     <?php
     $this->renderPartial('_search', array(
         'model' => $model,
     ));
-
     ?>
 </div><!-- search-form -->
 
@@ -54,5 +52,4 @@ $this->widget('\TbGridView', array(
         ),
     ),
 ));
-
 ?>

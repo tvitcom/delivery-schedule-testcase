@@ -6,7 +6,6 @@ $this->menu = array(
     array('label' => 'List Trip', 'url' => array('index')),
     array('label' => 'Create Trip', 'url' => array('create')),
 );
-
 ?>
 
 <h1>Manage Trips</h1>
@@ -28,5 +27,4 @@ $this->widget('\TbGridView', array(
         ),
     ),
 ));
-
 ?>

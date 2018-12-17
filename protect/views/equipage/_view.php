@@ -1,7 +1,6 @@
 <?php
 /* @var $this EquipageController */
 /* @var $data Equipage */
-
 ?>
 
 <div class="view">

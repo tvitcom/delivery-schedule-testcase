@@ -251,16 +251,17 @@ class TripController extends Controller {
                 . 'from trips) as dataready '
                 . 'where (' . $start_date . ' BETWEEN dataready.start_date and dataready.finish_date) '
                 . 'OR (' . $finish_date . ' BETWEEN dataready.start_date and dataready.finish_date)';
+//var_dump($sql);exit();
             $connection = Yii::app()->db;
             $result = $connection->createCommand($sql)->queryAll();
-            //var_dump($result);
+//var_dump($result);
             Yii::app()->end();
 
 //   2) Запрашиваем все экипажи из БД которых нет в результате запроса поездок на указанный период
 //    в полученном промежутке;
-            $data = Equipage::model()->findAll('id=:region_id', array(
-                ':region_id' => (int) $_POST['region_id'],
-            ));
+            $data = Equipage::model()->findAll()/* 'id=:region_id', array(
+              ':region_id' => (int) $_POST['region_id'],
+              )) */;
 //   3) Формируем результат для отправки в формате select option для dropdown полей.
 
             $data = CHtml::listData($data, 'id', 'fio1' . 'fio2');

@@ -56,7 +56,6 @@
                             'class' => 'nav navbar-nav navbar-right',
                         ),
                     ));
-
                     ?>
                     <form class="navbar-form navbar-right">
                         <input class="form-control" placeholder="Search..." type="text">
@@ -108,24 +107,22 @@
                         'class' => 'nav nav-sidebar'
                         )
                     );
-
                     ?>
                 </div>
 
                 <div class="col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 main">
 
                     <div class="table-responsive">
-                        <?php
-                        $this->beginWidget('zii.widgets.CPortlet', array(
-                            'title' => 'Operations',
-                        ));
-                        $this->widget('zii.widgets.CMenu', array(
-                            'items' => $this->menu,
-                            'htmlOptions' => array('class' => 'operations'),
-                        ));
-                        $this->endWidget();
-
-                        ?>
+<?php
+$this->beginWidget('zii.widgets.CPortlet', array(
+    'title' => 'Operations',
+));
+$this->widget('zii.widgets.CMenu', array(
+    'items' => $this->menu,
+    'htmlOptions' => array('class' => 'operations'),
+));
+$this->endWidget();
+?>
 
                         <?php echo $content; ?>
                     </div>
